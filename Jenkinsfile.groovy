@@ -11,6 +11,7 @@ pipeline {
                   appVersion = sh(returnStdout: true, script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout').trim()
                   codeRevision = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
                   echo "App version: $appVersion, Code revision: $codeRevision"
+                  currentBuild.displayName = "[$appVersion] ($codeRevision)"
                     
                   build 'CD/1_commit_stage'
                 }
