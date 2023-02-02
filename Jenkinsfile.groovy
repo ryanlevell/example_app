@@ -8,7 +8,7 @@ pipeline {
         stage('Validate Commit') {
             steps {
                 script {
-                  appVersion = sh(returnStdOut: true, script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout').trim()
+                  appVersion = sh(returnStdout: true, script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout').trim()
                   codeRevision = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
                   echo "App version: $appVersion, Code revision: $codeRevision"
                     
