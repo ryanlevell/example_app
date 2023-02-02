@@ -14,6 +14,7 @@ pipeline {
                   currentBuild.displayName = "[$appVersion] ($codeRevision)"
                     
                   // TODO instantly fail if appVersion release version already exists in artifactory????
+                  // TODO skip pipeline if codeRevision != latest revision (if multiple jobs piled up in queue, skip to the latest one)
                     
                   build 'CD/1_commit_stage'
                 }
