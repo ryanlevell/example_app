@@ -1,4 +1,6 @@
 
+// do not allow concurrent builds
+
 def appVerion
 def codeRevision
 
