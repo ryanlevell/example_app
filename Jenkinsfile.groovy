@@ -13,6 +13,8 @@ pipeline {
                   echo "App version: $appVersion, Code revision: $codeRevision"
                   currentBuild.displayName = "[$appVersion] ($codeRevision)"
                     
+                  // TODO instantly fail if appVersion release version already exists in artifactory????
+                    
                   build 'CD/1_commit_stage'
                 }
             }
