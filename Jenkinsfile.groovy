@@ -11,6 +11,7 @@ pipeline {
                 build job: 'CD/2_deploy_prod_like_environment', parameters: [
                     string(name: 'app_version', value: '1.0.0')
                 ]
+            }
         }
         stage('Run Acceptance Tests') {
             steps {
