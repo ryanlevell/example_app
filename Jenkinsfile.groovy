@@ -19,23 +19,24 @@ pipeline {
                   // TODO skip pipeline if codeRevision != latest revision (if multiple jobs piled up in queue, skip to the latest one)
                   // TODO output ATDD report  
 
-                  build 'CD/1_commit_stage'
+                    echo 'Commit - compile'
+                    echo 'Commit - security scans'
+                    echo 'Commit - tests'
+                    echo 'Commit - code analysis'
+                    echo 'Commit - packaging'
+                    echo 'Commit - prepare artifacts (test databases) for later stages'
+                    echo 'Commit - deploy to prod-like environment'
                 }
             }
         }
-        stage('Deploy To Prod-like Env') {
+        stage('Acceptance Test Stage') {
             steps {
-                build job: 'CD/2_deploy_prod_like_environment', parameters: [
-                    string(name: 'app_version', value: appVersion)
-                ]
-            }
-        }
-        stage('Run Acceptance Tests') {
-            steps {
-                build job: 'CD/3_acceptance_test_stage', parameters: [
-                    string(name: 'app_version', value: appVersion),
-                    string(name: 'code_revision', value: codeRevision)
-                ]
+                echo 'Acceptance Test - tests'
+                echo 'Acceptance Test - deploy to other environments: key requirements are'
+                echo '- to be able to see a list of release candidates that have passed the acceptance test stage'
+                echo '- have a button to deploy the version of your choice into thr environment of your choice'
+                echo '- see which release is currently deployed in each environment'
+                echo '- and which version in version control it came from.'
             }
         }
     }
