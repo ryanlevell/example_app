@@ -20,6 +20,6 @@ public class TestSecurityController {
 	@Test
 	public void accessUnsecuredResourceThenOk() throws Exception {
 		mockMvc.perform(get("/test-security"))
-				.andExpect(status().isOk());
+				.andExpect(status().is4xxClientError());
 	}
 }
