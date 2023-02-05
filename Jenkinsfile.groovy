@@ -7,7 +7,7 @@ def codeRevision
 pipeline {
     agent 'any'
     stages {
-        stage('Validate Commit') {
+        stage('Commit Stage') {
             steps {
                 script {
                   appVersion = sh(returnStdout: true, script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout').trim()
