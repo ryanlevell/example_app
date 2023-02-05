@@ -1,4 +1,6 @@
 
+// do not allow concurrent builds
+
 def appVerion
 def codeRevision
 
@@ -15,7 +17,8 @@ pipeline {
                     
                   // TODO instantly fail if appVersion release version already exists in artifactory????
                   // TODO skip pipeline if codeRevision != latest revision (if multiple jobs piled up in queue, skip to the latest one)
-                    
+                  // TODO output ATDD report  
+
                   build 'CD/1_commit_stage'
                 }
             }
