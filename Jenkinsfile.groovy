@@ -25,7 +25,10 @@ pipeline {
                     echo 'Commit - code analysis'
                     echo 'Commit - packaging'
                     echo 'Commit - prepare artifacts (test databases) for later stages'
-                    echo 'Commit - deploy to prod-like environment'
+
+                    echo 'Commit - deploy to prod-like environment (in this stage ?????)'
+
+                    script './mvnw clean install'
                 }
             }
         }
