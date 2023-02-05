@@ -1,2 +1,5 @@
 # example_app
-1
+
+# Prerequisites
+Run `mvn wrapper:wrapper` to get started with `./mvnw`  
+
