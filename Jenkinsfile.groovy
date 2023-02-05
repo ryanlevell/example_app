@@ -28,7 +28,7 @@ pipeline {
 
                     echo 'Commit - deploy to prod-like environment (in this stage ?????)'
 
-                    script './mvnw clean install'
+                    sh './mvnw clean install'
                 }
             }
         }
