@@ -6,28 +6,47 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.reactive.server.WebTestClient;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.web.reactive.function.client.ExchangeFilterFunctions.basicAuthentication;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 public class TestSecurityController {
 
 	@Autowired
-	private MockMvc mockMvc;
+	private WebTestClient webTestClient;
 
 	@Test
-	public void shouldReturnUnauthorized_whenNoAuthUsed() throws Exception {
-		mockMvc.perform(get("/test-security"))
-				.andExpect(status().is4xxClientError());
+	public void shouldReturnUnauthorized_whenNoAuthUsed() {
+		webTestClient
+				.get()
+				.uri("/test-security")
+				.exchange()
+				.expectStatus()
+				.is4xxClientError();
 	}
 
 	@Test
 	@WithMockUser
-	public void shouldReturnOk_whenNoAuthUsed() throws Exception {
-		mockMvc.perform(get("/test-security"))
-				.andExpect(status().isOk());
+	public void shouldReturnOk_whenMockAuthUsed() {
+		webTestClient
+				.get()
+				.uri("/test-security")
+				.exchange()
+				.expectStatus()
+				.is2xxSuccessful();
+	}
+
+	@Test
+	public void shouldReturnOk_whenBasicAuthUsed() {
+		webTestClient
+				.mutate()
+				.filter(basicAuthentication("test", "test1")).build()
+				.get()
+				.uri("/test-security")
+				.exchange()
+				.expectStatus()
+				.is2xxSuccessful();
 	}
 }
