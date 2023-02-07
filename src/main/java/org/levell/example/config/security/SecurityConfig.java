@@ -17,9 +17,22 @@ public class SecurityConfig {
         http
                 .csrf()
                 .disable()
-                .authorizeExchange(exchanges -> exchanges
-                        .anyExchange().authenticated()
-                )
+
+                .authorizeExchange()
+                .pathMatchers("/login", "/dashboard/**")
+                .permitAll()
+
+                .and()
+                .authorizeExchange()
+                .pathMatchers("/deploy/**")
+                .authenticated()
+                .and()
+                .formLogin(withDefaults())
+
+                .authorizeExchange()
+                .pathMatchers("/api/**")
+                .authenticated()
+                .and()
                 .httpBasic(withDefaults());
         return http.build();
     }

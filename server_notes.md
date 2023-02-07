@@ -11,6 +11,8 @@ https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubunt
 ### MOVE KEY FROM LEGACY TRUSTED.GPG
 https://itsfoss.com/key-is-stored-in-legacy-trusted-gpg/
 
+### Enable TLS via Nginx
+https://computingforgeeks.com/configure-jenkins-behind-nginx-reverse-proxy-and-lets-encrypt-ssl/
 
 # DEBUG GITHUB WEBHOOK FOR JENKINS
 https://stackoverflow.com/a/60625199

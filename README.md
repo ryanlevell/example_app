@@ -9,5 +9,10 @@ Run `mvn wrapper:wrapper` to get started with `./mvnw`
 `SPRING_SECURITY_USER_NAME`  
 `SPRING_SECURITY_USER_PASSWORD`
 
+# Running
+
+### Local
+In IntelliJ add `Edit Configurations > Add VM Options` => `-Dspring.profiles.active=local`
+
 # QoL TODOs
 - Added `fmt:format` plugin and pre-commit hook `fmt:check`
