@@ -29,6 +29,7 @@ pipeline {
                     echo 'Commit - deploy to prod-like environment (in this stage ?????)'
 
                     sh './mvnw -T1C clean install'
+                    sh 'flyctl deploy'
                 }
             }
         }

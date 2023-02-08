@@ -19,13 +19,32 @@ https://computingforgeeks.com/configure-jenkins-behind-nginx-reverse-proxy-and-l
 ### Install Fly.io CLI on Jenkins
 https://fly.io/docs/speedrun/
 
-\* Add to /etc/environment:
+\* Add fly.io `bin` to `/etc/environment`:
 ```
-FLYCTL_INSTALL="/home/ubuntu/.fly"
-PATH="$FLYCTL_INSTALL/bin:$PATH"
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/ubuntu/.fly/bin"
 ```
 ```
 . /etc/environment
+```
+
+#### Add Dockerfile for fly.io deployment
+```
+FROM eclipse-temurin:17-jdk-alpine
+VOLUME /tmp
+COPY target/*.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
+```
+
+#### Set FLy.io secrets for Spring Security user
+```
+flyctl secrets set SPRING_SECURITY_USER_NAME=user
+flyctl secrets set SPRING_SECURITY_USER_PASSWORD=password
+```
+
+#### Deploy to Fly.io
+```
+flyctl launch # to set up initial fly.toml
+fltctl deploy # to deploy using existing fly.toml
 ```
 
 # DEBUG GITHUB WEBHOOK FOR JENKINS
