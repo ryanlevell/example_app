@@ -50,4 +50,6 @@ fltctl deploy # to deploy using existing fly.toml
 # DEBUG GITHUB WEBHOOK FOR JENKINS
 https://stackoverflow.com/a/60625199
 
-
+# Unsolved Issues
+- Running `flyctl` from both ubuntu user and jenkins user. Can only do one or the other without deleting fly* files in /tmp.
+  - Also requires relogging into fly via `sudo su jenkins ; fly auth login`
