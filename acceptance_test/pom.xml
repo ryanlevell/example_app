@@ -79,6 +79,9 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${maven-surefire-plugin.version}</version>
 				<configuration>
+					<systemPropertyVariables>
+						<selenide.remote>http://localhost:4444/wd/hub</selenide.remote>
+					</systemPropertyVariables>
 					<useModulePath>false</useModulePath> <!-- https://issues.apache.org/jira/browse/SUREFIRE-1809 -->
 					<useFile>false</useFile>
 					<includes>

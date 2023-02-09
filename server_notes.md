@@ -47,8 +47,23 @@ flyctl launch # to set up initial fly.toml
 fltctl deploy # to deploy using existing fly.toml
 ```
 
-# DEBUG GITHUB WEBHOOK FOR JENKINS
+# Debug Github Webhook for Jenkins
 https://stackoverflow.com/a/60625199
+
+# Install Docker
+https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+
+### Install Docker Chrome for Browser (Selenium) Testing
+```
+sudo docker run --rm -d -p 4444:4444 --shm-size=2g selenium/standalone-chrome
+```
+
+Add to surefire plugin:
+```
+<systemPropertyVariables>
+  <selenide.remote>http://localhost:4444/wd/hub</selenide.remote>
+</systemPropertyVariables>
+```
 
 # Unsolved Issues
 - Running `flyctl` from both ubuntu user and jenkins user. Can only do one or the other without deleting fly* files in /tmp.
