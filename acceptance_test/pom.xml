@@ -16,6 +16,13 @@
 
 	<properties>
 		<java.version>17</java.version>
+		<selenium-java.version>4.8.0</selenium-java.version>
+		<spock-bom.version>2.4-M1-groovy-3.0</spock-bom.version>
+		<gmavenplus-plugin.version>2.1.0</gmavenplus-plugin.version>
+		<maven-surefire-plugin.version>3.0.0-M8</maven-surefire-plugin.version>
+		<webdrivermanager.version>5.3.2</webdrivermanager.version>
+		<selenide.version>6.11.1</selenide.version>
+		<httpclient5.version>5.2.1</httpclient5.version>
 	</properties>
 
 	<dependencies>
@@ -24,6 +31,16 @@
 			<artifactId>spock-core</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.codeborne</groupId>
+			<artifactId>selenide</artifactId>
+			<version>${selenide.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents.client5</groupId>
+			<artifactId>httpclient5</artifactId>
+			<version>${httpclient5.version}</version>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
@@ -31,7 +48,7 @@
 			<dependency>
 				<groupId>org.spockframework</groupId>
 				<artifactId>spock-bom</artifactId>
-				<version>2.4-M1-groovy-3.0</version>
+				<version>${spock-bom.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -46,7 +63,7 @@
                 visit https://github.com/groovy/GMavenPlus/wiki -->
 				<groupId>org.codehaus.gmavenplus</groupId>
 				<artifactId>gmavenplus-plugin</artifactId>
-				<version>2.1.0</version>
+				<version>${gmavenplus-plugin.version}</version>
 				<executions>
 					<execution>
 						<goals>
@@ -60,7 +77,7 @@
 			<!-- Only required if names of spec classes don't match default Surefire patterns (`*Test` etc.) -->
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.0.0-M8</version>
+				<version>${maven-surefire-plugin.version}</version>
 				<configuration>
 					<useModulePath>false</useModulePath> <!-- https://issues.apache.org/jira/browse/SUREFIRE-1809 -->
 					<useFile>false</useFile>
