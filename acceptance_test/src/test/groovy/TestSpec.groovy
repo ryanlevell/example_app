@@ -11,10 +11,10 @@ class TestSpec extends Specification {
     }
 
     def "a browser test"() {
-        when:
+        when: "The deploy dashboard is opened"
         open("https://spring-moon-2764.fly.dev/dashboard/home")
 
-        then:
+        then: "The Dashboard page is shown"
         $("h1").text() == "Hello thymeleaf!"
     }
 }
