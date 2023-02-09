@@ -41,6 +41,8 @@ pipeline {
                 echo '- have a button to deploy the version of your choice into thr environment of your choice'
                 echo '- see which release is currently deployed in each environment'
                 echo '- and which version in version control it came from.'
+
+                sh 'cd acceptance_test && mvn clean test'
             }
         }
     }
