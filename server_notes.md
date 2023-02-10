@@ -37,8 +37,8 @@ ENTRYPOINT ["java","-jar","/app.jar"]
 
 #### Set FLy.io secrets for Spring Security user
 ```
-flyctl secrets set SPRING_SECURITY_USER_NAME=user
-flyctl secrets set SPRING_SECURITY_USER_PASSWORD=password
+flyctl secrets set SPRING_SECURITY_USER_NAME=user --config ./deploy/fly.production.toml
+flyctl secrets set SPRING_SECURITY_USER_PASSWORD=password --config ./deploy/fly.production.toml
 ```
 
 #### Deploy to Fly.io
