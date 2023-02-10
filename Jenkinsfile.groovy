@@ -29,7 +29,7 @@ pipeline {
                     echo 'Commit - deploy to prod-like environment (in this stage ?????)'
 
                     sh './mvnw -T1C clean install'
-                    sh '/home/ubuntu/.fly/bin/flyctl deploy'
+                    sh '/home/ubuntu/.fly/bin/flyctl deploy --config ./deploy/fly.staging.toml'
                 }
             }
         }

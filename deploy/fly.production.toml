@@ -1,4 +1,4 @@
-# fly.toml file generated for spring-moon-2764 on 2023-02-07T19:20:37Z
+# fly.staging.toml file generated for spring-moon-2764 on 2023-02-07T19:20:37Z
 
 app = "spring-moon-2764"
 kill_signal = "SIGINT"
