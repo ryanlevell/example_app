@@ -53,6 +53,22 @@ https://stackoverflow.com/a/60625199
 # Install Docker
 https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
 
+### Add jenkins user to use docker without sudo  
+Fixes `Error connecting to local docker daemon: Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock`:
+
+```
+sudo groupadd docker
+sudo usermod -aG docker jenkins
+
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+sudo service jenkins restart
+```
+
+### Add Docker agent to Jenkins
+- Install 2 plugins: Docker plugin and Docker Pipeline.
+- Go to Jenkins root page > Manage Jenkins > Manage Plugins > Available and search for the plugins.
+
 ### Install Docker Chrome for Browser (Selenium) Testing
 ```
 sudo docker run --rm -d -p 4444:4444 --shm-size=2g selenium/standalone-chrome

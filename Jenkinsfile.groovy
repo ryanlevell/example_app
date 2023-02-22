@@ -34,6 +34,12 @@ pipeline {
             }
         }
         stage('Acceptance Test Stage') {
+            agent {
+                docker {
+                    image 'mcr.microsoft.com/playwright:v1.31.0-focal'
+                    reuseNode true
+                }
+            }
             steps {
                 echo 'Acceptance Test - tests'
                 echo 'Acceptance Test - deploy to other environments: key requirements are'
