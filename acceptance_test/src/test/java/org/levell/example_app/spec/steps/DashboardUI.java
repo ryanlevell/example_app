@@ -13,7 +13,10 @@ public class DashboardUI {
             Browser browser = playwright.chromium().launch();
             Page page = browser.newPage();
             page.navigate(STAGING_URI);
-            return page.getByText("Hello thymeleaf!").textContent();
+            page.locator("#username").fill("user");
+            page.locator("#password").fill("password");
+            page.locator("[type='submit']").click();
+            return page.getByText("Hello user!").textContent();
         }
     }
 

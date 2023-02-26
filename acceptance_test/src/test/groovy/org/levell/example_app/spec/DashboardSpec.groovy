@@ -14,7 +14,7 @@ class DashboardSpec extends Specification {
 
     def "Should show sample text when page is opened"() {
         expect:
-        dashboardUI.getSampleText() == "Hello thymeleaf!"
+        dashboardUI.getSampleText() == "Hello user!"
     }
 
     @Ignore("WIP")
