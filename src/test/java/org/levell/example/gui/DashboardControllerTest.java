@@ -21,6 +21,6 @@ public class DashboardControllerTest {
 				.uri("/dashboard/home")
 				.exchange()
 				.expectStatus()
-				.is2xxSuccessful();
+				.is4xxClientError();
 	}
 }

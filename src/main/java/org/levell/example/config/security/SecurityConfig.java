@@ -19,12 +19,12 @@ public class SecurityConfig {
                 .disable()
 
                 .authorizeExchange()
-                .pathMatchers("/login", "/dashboard/**")
+                .pathMatchers("/login")
                 .permitAll()
 
                 .and()
                 .authorizeExchange()
-                .pathMatchers("/deploy/**")
+                .pathMatchers("/dashboard/**")
                 .authenticated()
                 .and()
                 .formLogin(withDefaults())

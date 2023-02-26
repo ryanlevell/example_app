@@ -19,7 +19,13 @@ In IntelliJ add `Edit Configurations > Add VM Options` => `-Dspring.profiles.act
 
 # Features
 
+### Deploy a new version
+As a user of example_app
+I want a new version to be deployed
+So that I can use the newest features
+
 ### View active deployments
-As an application stakeholder
-I want to view the deployed versions of the application
-So that I know what version and features are available
+As a user of example_app
+I want the deployed versions to be viewable
+So that I know what features are available
+

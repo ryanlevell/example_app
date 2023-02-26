@@ -10,8 +10,7 @@ public class DeployApi {
 
     static final String STAGING_URI = "https://spring-moon-2764.fly.dev";
 
-    public String create_a_new_deployment(String appName, String appVersion, String appEnvironment, String buildNumber, LocalDateTime buildTime) {
-//        return "";
+    public String create_a_deployment_candidate(String appName, String appVersion, String appEnvironment, String buildNumber, LocalDateTime buildTime) {
         return RestAssured.given()
                 .baseUri(STAGING_URI)
                 .body(format("""

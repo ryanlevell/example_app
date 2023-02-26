@@ -20,7 +20,7 @@ public class DashboardUI {
     public String get_version_displayed() {
 //        open(STAGING_URI + "/dashboard/home");
 //        return $(".staging .version").text().equals(version);
-
+//
 //        try (Playwright playwright = Playwright.create()) {
 //            Browser browser = playwright.chromium().launch();
 //            Page page = browser.newPage();

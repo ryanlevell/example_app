@@ -18,9 +18,10 @@ class DashboardSpec extends Specification {
     }
 
     @Ignore("WIP")
-    def "Should display new version when application is deployed"() {
-        when: "A new version is deployed"
-        deployApi.create_a_new_deployment("app1", "1.0.0", "staging", "", LocalDateTime.parse("2007-12-03T10:15:30"))
+    def "Should display new version when a deployment candidate is created"() {
+
+        when: "A new deployment candidate is created"
+        deployApi.create_a_deployment_candidate("app1", "1.0.0", "staging", "", LocalDateTime.parse("2007-12-03T10:15:30"))
 
         then: "The new version is displayed in the deploy dashboard"
         dashboardUI.get_version_displayed() == "1.0.0"
