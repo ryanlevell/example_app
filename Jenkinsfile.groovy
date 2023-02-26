@@ -36,7 +36,7 @@ pipeline {
         stage('Acceptance Test Stage') {
             agent {
                 docker {
-                    image 'mcr.microsoft.com/playwright:v1.31.0-focal'
+                    image 'mcr.microsoft.com/playwright/java:v1.30.0-focal'
                     reuseNode true
                 }
             }
@@ -48,7 +48,7 @@ pipeline {
                 echo '- see which release is currently deployed in each environment'
                 echo '- and which version in version control it came from.'
 
-                sh 'cd acceptance_test && mvn clean test'
+                sh 'cd acceptance_test && ./mvnw clean test'
             }
         }
     }
