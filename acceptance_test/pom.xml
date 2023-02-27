@@ -17,6 +17,8 @@
 		<maven.compiler.release>17</maven.compiler.release>
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
+		<commons-configuration2.version>2.8.0</commons-configuration2.version>
+		<commons-beanutils.version>1.9.4</commons-beanutils.version>
 	</properties>
 
 	<dependencies>
@@ -36,6 +38,16 @@
 			<artifactId>playwright</artifactId>
 			<version>${playwright.version}</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-configuration2</artifactId>
+			<version>${commons-configuration2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>${commons-beanutils.version}</version>
 		</dependency>
 	</dependencies>
 

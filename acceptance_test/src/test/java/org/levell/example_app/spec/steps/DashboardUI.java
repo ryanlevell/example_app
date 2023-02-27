@@ -3,16 +3,17 @@ package org.levell.example_app.spec.steps;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
+import org.levell.example_app.config.Config;
 
 public class DashboardUI {
 
-    static final String STAGING_URI = "https://spring-moon-2764.fly.dev/dashboard/home";
+    Config config = new Config();
 
     public String getSampleText() {
         try (Playwright playwright = Playwright.create()) {
             Browser browser = playwright.chromium().launch();
             Page page = browser.newPage();
-            page.navigate(STAGING_URI);
+            page.navigate(config.getBaseUri());
             page.locator("#username").fill("user");
             page.locator("#password").fill("password");
             page.locator("[type='submit']").click();
