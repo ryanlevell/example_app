@@ -15,6 +15,7 @@ public class Config {
 
     static final String PROP_PROFILE = "at.profile";
     static final String PROP_BASE_URI = "at.base-uri";
+    static final String PROP_BROWSER_HEADLESS = "at.browser.headless";
 
     public Config() {
         String profile = System.getProperty(PROP_PROFILE, "local");
@@ -29,5 +30,9 @@ public class Config {
 
     public String getBaseUri() {
         return config.getString(PROP_BASE_URI);
+    }
+
+    public boolean getBrowserHeadless() {
+        return config.getBoolean(PROP_BROWSER_HEADLESS);
     }
 }

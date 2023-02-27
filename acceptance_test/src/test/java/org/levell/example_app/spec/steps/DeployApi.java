@@ -1,6 +1,7 @@
 package org.levell.example_app.spec.steps;
 
 import io.restassured.RestAssured;
+import org.levell.example_app.config.Config;
 
 import java.time.LocalDateTime;
 
@@ -8,21 +9,20 @@ import static java.lang.String.format;
 
 public class DeployApi {
 
-    static final String STAGING_URI = "https://spring-moon-2764.fly.dev";
+    static Config config = new Config();
 
-    public String create_a_deployment_candidate(String appName, String appVersion, String appEnvironment, String buildNumber, LocalDateTime buildTime) {
+    public String create_release_candidate(String appName, String appVersion, String buildNumber, LocalDateTime buildTime) {
         return RestAssured.given()
-                .baseUri(STAGING_URI)
+                .baseUri(config.getBaseUri())
                 .body(format("""
                         {
                           "build_number": "%s",
                           "build_time": "%s",
                           "app_name": "%s",
-                          "app_version": "%s",
-                          "app_environment": "%s"
+                          "app_version": "%s"
                         }
-                        """, buildNumber, buildTime, appName, appVersion, appEnvironment))
-                .post("api/deployment")
+                        """, buildNumber, buildTime, appName, appVersion))
+                .post("api/release")
                 .body()
                 .asPrettyString();
     }

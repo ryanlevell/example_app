@@ -1,26 +1,41 @@
 package org.levell.example_app.spec.steps;
 
-import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Playwright;
+import com.microsoft.playwright.*;
 import org.levell.example_app.config.Config;
 
 public class DashboardUI {
 
     static Config config = new Config();
     Playwright playwright = Playwright.create();
-    Browser browser;
+    Page page;
 
-    public String getSampleText() {
-        Page page = getBrowser().newPage();
-        page.navigate(config.getBaseUri());
-        page.locator("#username").fill("user");
-        page.locator("#password").fill("password");
-        page.locator("[type='submit']").click();
-        return page.getByText("Hello user!").textContent();
+    public void login() {
+        getPage().locator("#username").fill("user");
+        getPage().locator("#password").fill("password");
+        getPage().locator("[type='submit']").click();
+        getPage().waitForSelector("h1");
     }
 
-    public String get_version_displayed() {
+    public String get_sample_text() {
+        getPage().navigate(config.getBaseUri() + "/dashboard/home");
+
+        if(!isLoggedIn()) {
+            login();
+        }
+
+        return getPage().getByText("Hello user!").textContent();
+    }
+
+    private boolean isLoggedIn() {
+        try {
+            getPage().waitForSelector("#username", new Page.WaitForSelectorOptions().setTimeout(2500));
+            return false;
+        } catch(TimeoutError e) {
+            return true;
+        }
+    }
+
+    public String get_latest_release_version() {
 //        open(STAGING_URI + "/dashboard/home");
 //        return $(".staging .version").text().equals(version);
 //
@@ -34,11 +49,11 @@ public class DashboardUI {
         return "";
     }
 
-    private Browser getBrowser() {
-        if(browser == null) {
-            browser = playwright.chromium().launch();
+    private Page getPage() {
+        if(page == null) {
+            page = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(config.getBrowserHeadless())).newContext().newPage();
         }
-        return browser;
+        return page;
     }
 
     public void close() {
