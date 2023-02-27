@@ -48,7 +48,7 @@ pipeline {
                 echo '- see which release is currently deployed in each environment'
                 echo '- and which version in version control it came from.'
 
-                sh 'cd acceptance_test && ./mvnw clean test'
+                sh 'cd acceptance_test && ./mvnw clean test -Dat.profile=staging'
             }
         }
     }
