@@ -26,4 +26,8 @@ class DashboardSpec extends Specification {
         then: "The new version is displayed in the deploy dashboard"
         dashboardUI.get_version_displayed() == "1.0.0"
     }
+
+    def cleanup() {
+        dashboardUI.close();
+    }
 }
